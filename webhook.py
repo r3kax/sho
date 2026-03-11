@@ -14,8 +14,5 @@ async def crypto_webhook(request: Request):
         user_id, product_id = payload.split(":")
         item = database.get_item(product_id)
         if item:
-            await bot.send_message(
-                int(user_id),
-                f"✅ Оплата прошла!\nВаш товар:\n{item[2]}"
-            )
+            await bot.send_message(int(user_id), f"✅ Оплата прошла!\nВаш товар:\n{item[2]}")
     return {"ok": True}

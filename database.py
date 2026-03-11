@@ -13,17 +13,11 @@ CREATE TABLE IF NOT EXISTS items(
 conn.commit()
 
 def add_item(name, content):
-    cursor.execute(
-        "INSERT INTO items (name, content) VALUES (?, ?)",
-        (name, content)
-    )
+    cursor.execute("INSERT INTO items (name, content) VALUES (?, ?)", (name, content))
     conn.commit()
 
 def get_item(item_id):
-    cursor.execute(
-        "SELECT * FROM items WHERE id=?",
-        (item_id,)
-    )
+    cursor.execute("SELECT * FROM items WHERE id=?", (item_id,))
     return cursor.fetchone()
 
 def get_all_items():

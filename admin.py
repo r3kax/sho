@@ -10,7 +10,7 @@ async def home():
     items = database.get_all_items()
     html = "<h2>Товары</h2><ul>"
     for i in items:
-        html += f"<li>{i[0]} | {i[1]} | {i[2]}</li>"
+        html += f"<li>{i[1]} | {i[2]}</li>"
     html += "</ul>"
     html += """
     <h3>Добавить товар</h3>
@@ -28,4 +28,4 @@ async def add_item(name: str = Form(...), content: str = Form(...), password: st
     if password != ADMIN_PASSWORD:
         return {"ok": False, "error": "Неверный пароль"}
     database.add_item(name, content)
-    return {"ok": True, "message": "Товар добавлен"}
+    return {"ok": True, "message": f"Товар '{name}' добавлен"}
